@@ -1,0 +1,1 @@
+var log=function(o){var n=(new Date).toISOString();console.log(n+":"+o)};
