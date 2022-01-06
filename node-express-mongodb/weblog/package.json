@@ -7,11 +7,26 @@
     "lib": "lib"
   },
   "scripts": {
+    "gulp": "gulp",
+    "build-dev": "export NODE_ENV=development && gulp",
+    "build-prod": "export NODE_ENV=production && gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.6.0"
+    "del": "^6.0.0",
+    "eslint": "^8.6.0",
+    "gulp": "^4.0.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "require-dir": "^1.2.0",
+    "sass": "^1.46.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1"
   }
 }
