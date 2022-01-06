@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome Page</title>
+
+    <%- include("./_share/stylesheets.ejs") %>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-top.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="container">
+      <%- include("./_share/navbar.ejs") %>
+      <h1>ようこそ</h1>
+      <p class="lead">
+        This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar
+        remains in its original position and moves with the rest of the page.
+      </p>
+    </main>
+    <%- include("./_share/javascripts.ejs") %>
+  </body>
+</html>
