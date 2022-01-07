@@ -18,6 +18,12 @@ module.exports = {
       property: 'key',
       extension: '.log',
     },
+    DataRollingFileLogAppender: {
+      type: 'dateFile',
+      filename: path.join(ROOT, './log/access/access.log'),
+      pattern: '-yyyyMMdd',
+      daysToKeep: 30,
+    },
   },
   categories: {
     default: {
@@ -31,6 +37,10 @@ module.exports = {
     application: {
       appenders: ['MultiFileAppender'],
       level: 'ERROR',
+    },
+    access: {
+      appenders: ['DataRollingFileLogAppender'],
+      level: 'INFO',
     },
   },
 }

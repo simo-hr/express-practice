@@ -21,9 +21,11 @@ for (var level of levels) {
   })(level)
 }
 const application = new ApplicationLogger()
+const access = log4js.getLogger('access')
 
 module.exports = {
   console,
   system,
   application,
+  access,
 }
