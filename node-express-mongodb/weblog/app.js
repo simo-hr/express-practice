@@ -1,3 +1,4 @@
+const systemlogger = require('./lib/log/systemlogger')
 const express = require('express')
 const app = express()
 
@@ -10,5 +11,5 @@ app.use(
 )
 
 app.use('/', require('./routes/index.js'))
-
+app.use(systemlogger())
 app.listen(3000)
