@@ -3,15 +3,23 @@ const router = require('express').Router()
 const MongoClient = require('mongodb').MongoClient
 
 router.get('/*', (req, res) => {
+  const keyword = req.query.keyword || ''
+  const regexp = new RegExp(`.*${keyword}.*`)
   MongoClient.connect(CONNECTION_URL, OPTIONS, (error, client) => {
     const db = client.db(DATABASE)
+
     db.collection('posts')
-      .findOne({
-        url: req.url.slice(1),
+      .find({
+        $or: [{ title: regexp }, { content: regexp }],
       })
-      .then((doc) => {
-        console.log(doc)
-        res.render('../views/posts/index.ejs', doc)
+      .sort({ published: -1 })
+      .toArray()
+      .then((list) => {
+        const data = {
+          keyword,
+          list,
+        }
+        res.render('../views/search/list.ejs', data)
       })
       .catch((error) => {
         throw error
@@ -21,5 +29,4 @@ router.get('/*', (req, res) => {
       })
   })
 })
-
 module.exports = router

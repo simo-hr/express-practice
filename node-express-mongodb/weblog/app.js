@@ -10,7 +10,8 @@ app.use(
   '/public',
   express.static(__dirname + '/public/' + (process.env.NODE_ENV === 'development' ? 'development' : 'production'))
 )
-app.use('/posts', require('./routes/posts'))
+app.use('/posts/', require('./routes/posts'))
+app.use('/search/', require('./routes/search'))
 // 静的ファイルへのアクセスログはいらないのでここに配置
 app.use(accesslogger())
 
