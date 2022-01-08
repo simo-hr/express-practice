@@ -1,1 +1,82 @@
 [2022-01-07T09:21:03.488] [ERROR] system - sample
+[2022-01-08T15:15:03.300] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:16:47.458] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:17:29.913] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:17:32.219] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:17:41.650] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:21:30.963] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:22:30.892] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:22:52.251] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
+[2022-01-08T15:23:45.008] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/posts/index.ejs:14
+    12|     <main class="container">
+    13|       <div class="border-bottom mt-5 mb-5">
+ >> 14|         <h1><%= title %></h1>
+    15|       </div>
+    16|       <dl class="row mt-5 mb-5">
+    17|         <dt class="col-3">公開日:</dt>
+
+title is not defined
