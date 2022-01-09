@@ -257,3 +257,143 @@ title is not defined
 [2022-01-08T15:50:44.605] [ERROR] system - Could not find matching close tag for "<%=".
 [2022-01-08T15:50:48.057] [ERROR] system - Could not find matching close tag for "<%=".
 [2022-01-08T15:51:13.874] [ERROR] system - Could not find matching close tag for "<%=".
+[2022-01-08T16:38:56.596] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T16:41:05.675] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T16:57:57.934] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T16:58:00.690] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T16:58:01.466] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T16:58:28.902] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T16:58:30.409] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:01:26.568] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:02:24.036] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:02:24.864] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:02:25.379] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:02:29.918] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:02:49.314] [ERROR] system - Identifier 'i' has already been declared in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:02:50.348] [ERROR] system - Identifier 'i' has already been declared in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:02:51.004] [ERROR] system - Identifier 'i' has already been declared in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:03:38.897] [ERROR] system - Identifier 'i' has already been declared in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:03:39.972] [ERROR] system - Identifier 'i' has already been declared in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:03:48.907] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:03:49.545] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:03:49.857] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:04:02.213] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:04:02.686] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:04:48.743] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:04:49.482] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:04:49.873] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:04:59.361] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:05:00.030] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-08T17:05:06.718] [ERROR] system - Unexpected token ')' in /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs while compiling ejs
+
+If the above error is not helpful, you may want to try EJS-Lint:
+https://github.com/RyanZim/EJS-Lint
+Or, if you meant to create an async function, pass `async: true` as an option.
