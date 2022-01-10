@@ -12,6 +12,7 @@ app.use(
 )
 app.use('/posts/', require('./routes/posts'))
 app.use('/search/', require('./routes/search'))
+app.use('/account/', require('./routes/account'))
 // 静的ファイルへのアクセスログはいらないのでここに配置
 app.use(accesslogger())
 
