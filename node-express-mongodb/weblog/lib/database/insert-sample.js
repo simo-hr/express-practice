@@ -1,4 +1,4 @@
-const { CONNECTION_URL, DATABASE, OPTIONS } = require('../../config/mongdb.config')
+const { CONNECTION_URL, DATABASE, OPTIONS } = require('../../config/mongodb.config')
 
 const MongoClient = require('mongodb').MongoClient
 
