@@ -452,3 +452,12 @@ Or, if you meant to create an async function, pass `async: true` as an option.
 If the above error is not helpful, you may want to try EJS-Lint:
 https://github.com/RyanZim/EJS-Lint
 Or, if you meant to create an async function, pass `async: true` as an option.
+[2022-01-10T13:23:32.415] [ERROR] system - /Users/h.shimokawa/projects/practices/express-practice/node-express-mongodb/weblog/views/search/list.ejs:25
+    23|       <nav>
+    24|         <ul class="pagination">
+ >> 25|           <% for (i = 1; i <= pagination.max; i++) { %> <% if(pagination.current !== i) { %>
+    26|           <li class="pahe-item">
+    27|             <a class="page-link" href="/search/?keyword=<%= keyword %>&page=<%= i %>"><%= i %></a>
+    28|           </li>
+
+pagination is not defined
