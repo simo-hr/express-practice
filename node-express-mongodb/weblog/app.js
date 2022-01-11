@@ -3,7 +3,9 @@ var systemlogger = require('./lib/log/systemlogger.js')
 var express = require('express')
 var bodyParser = require('body-parser')
 var app = express()
-
+var cookieParser = require('cookie-parser')
+var session = require('express-session')
+var { SESSION_SECRET } = require('./config/app.config').security
 app.set('view engine', 'ejs')
 app.disable('x-powered-by')
 
@@ -14,6 +16,15 @@ app.use(
 
 app.use(accesslogger())
 
+app.use(cookieParser())
+app.use(
+  session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    name: 'sid',
+  })
+)
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
