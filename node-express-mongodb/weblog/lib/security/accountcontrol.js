@@ -74,7 +74,16 @@ passport.use(
   )
 )
 const initialize = () => {
-  return [passport.initialize(), passport.session()]
+  return [
+    passport.initialize(),
+    passport.session(),
+    (req, res, next) => {
+      if (req.user) {
+        res.locals.user = req.user
+      }
+      next()
+    },
+  ]
 }
 
 const authenticate = () => {
