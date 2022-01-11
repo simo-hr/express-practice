@@ -1,16 +1,17 @@
-var { CONNECTION_URL, OPTIONS, DATABSE } = require('../config/mongodb.config')
-var router = require('express').Router()
-var MongoClient = require('mongodb').MongoClient
+const { CONNECTION_URL, OPTIONS, DATABASE } = require('../config/mongodb.config')
+const router = require('express').Router()
+const MongoClient = require('mongodb').MongoClient
 
 router.get('/*', (req, res) => {
   MongoClient.connect(CONNECTION_URL, OPTIONS, (error, client) => {
-    var db = client.db(DATABSE)
+    const db = client.db(DATABASE)
     db.collection('posts')
       .findOne({
-        url: req.url,
+        url: req.url.slice(1),
       })
       .then((doc) => {
-        res.render('./posts/index.ejs', doc)
+        console.log(doc)
+        res.render('../views/posts/index.ejs', doc)
       })
       .catch((error) => {
         throw error
