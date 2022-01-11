@@ -2,6 +2,7 @@ const passport = require('passport')
 const localStrategy = require('passport-local').Strategy
 const MongoClient = require('mongodb').MongoClient
 const { CONNECTION_URL, OPTIONS, DATABASE } = require('../../config/mongodb.config')
+const hash = require('./hash')
 
 passport.serializeUser((email, done) => {
   done(null, email)
@@ -51,7 +52,7 @@ passport.use(
         db.collection('users')
           .findOne({
             email: username,
-            password: password,
+            password: hash.digest(password),
           })
           .then((user) => {
             if (user) {
