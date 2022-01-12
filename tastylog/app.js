@@ -1,3 +1,2 @@
 const PORT = process.env.PORT
-
-console.log(PORT);
+console.log(PORT)
