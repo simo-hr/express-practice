@@ -26,18 +26,8 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use(accesslogger())
 
 // Dynamic resource rooting
+app.use('/shops', require('./routes/shops'))
 app.use('/', require('./routes/index'))
-app.use('/test', async (req, res, next) => {
-  const { MySQLClient, sql } = require('./lib/database/client')
-  let data
-  try {
-    data = await MySQLClient.executeQuery(await sql('SELECT_SHOP_BASIC_BY_ID'), [1])
-    console.log(data)
-  } catch (error) {
-    next(error)
-  }
-  res.end('OK')
-})
 
 // Set application log.
 app.use(applicationlogger())
