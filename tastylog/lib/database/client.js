@@ -1,19 +1,12 @@
-const { promisify } = require('util')
 const path = require('path')
 const { sql } = require('@garafu/mysql-fileloader')({ root: path.join(__dirname, './sql') })
-const config = require('../../config/mysql.config')
-const mysql = require('mysql')
-const con = mysql.createConnection({
-  host: config.HOST,
-  port: config.POST,
-  user: config.USERNAME,
-  password: config.PASSWORD,
-  database: config.DATABASE,
-})
+const pool = require('./pool')
+
 const MySQLClient = {
-  connect: promisify(con.connect).bind(con),
-  query: promisify(con.query).bind(con),
-  end: promisify(con.end).bind(con),
+  executeQuery: async (query, values) => {
+    const result = await pool.executeQuery(query, values)
+    return result
+  },
 }
 
 module.exports = {

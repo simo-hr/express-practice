@@ -24,13 +24,10 @@ app.use('/test', async (req, res, next) => {
   const { MySQLClient, sql } = require('./lib/database/client')
   let data
   try {
-    await MySQLClient.connect()
-    data = await MySQLClient.query(await sql('SELECT_SHOP_BASIC_BY_ID'))
+    data = await MySQLClient.executeQuery(await sql('SELECT_SHOP_BASIC_BY_ID'), [1])
     console.log(data)
   } catch (error) {
     next(error)
-  } finally {
-    await MySQLClient.end()
   }
   res.end('OK')
 })
