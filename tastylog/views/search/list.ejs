@@ -31,7 +31,17 @@
 
         <nav>
           <ul class="pagination justify-content-center">
-            <!-- Pagination -->
+          <% for( let i = 1; i <= pagination.max; i++ ) { %>
+            <% if (pagination.current !== i) { %>
+              <% if (i<=3 || (pagination.current - 3 < i && i < pagination.current + 3) || pagination.max -3 < i) { %>
+                <li class="page-item"><a href="/search?keyword=<%= keyword %>&page=<%= i %>  " class="page-link"><%= i %> </a></li>
+              <% } else { %>
+                .
+              <% } %>
+            <% } else { %>
+              <li class="page-item"><span class="page-link disable"><%= i %> </span></li>
+            <% } %>
+          <% } %>
           </ul>
         </nav>
       </main>

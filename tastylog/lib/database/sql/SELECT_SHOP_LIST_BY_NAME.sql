@@ -28,4 +28,4 @@ FROM
 GROUP BY
     shop_category.id
 LIMIT
-    ?
+    ?, ?
