@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
   } catch (error) {
     next(error)
   }
-  res.render('./search/list.ejs', { results })
+  res.render('./search/list.ejs', { keyword, results })
 })
 
 module.exports = router
