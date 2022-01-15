@@ -26,6 +26,7 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 app.use(accesslogger())
 
 // Dynamic resource rooting
+app.use('/account', require('./routes/account'))
 app.use('/search', require('./routes/search'))
 app.use('/shops', require('./routes/shops'))
 app.use('/', require('./routes/index'))
