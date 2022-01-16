@@ -34,6 +34,13 @@ router.get('/regist/:shopId(\\d+)', async (req, res, next) => {
   }
 })
 
+
+router.post('/regist/:shopId(\\d+)', async (req, res, next) => {
+  const review = createReviewData(req)
+  const { shopId, shopName } = req.body
+  res.render('./account/reviews/regist-form.ejs', { shopId, shopName, review })
+})
+
 router.post('/regist/confirm', async (req, res, next) => {
   const review = createReviewData(req)
   const { shopId, shopName } = req.body
