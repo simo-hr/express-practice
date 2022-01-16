@@ -25,6 +25,9 @@ app.use('/public', express.static(path.join(__dirname, '/public')))
 // Set access log
 app.use(accesslogger())
 
+// Set middleware
+app.use(express.urlencoded({ extended: true }))
+
 // Dynamic resource rooting
 app.use('/account', require('./routes/account'))
 app.use('/search', require('./routes/search'))
