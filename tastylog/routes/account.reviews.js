@@ -1,4 +1,6 @@
 const router = require('express').Router()
+const req = require('express/lib/request')
+const res = require('express/lib/response')
 const moment = require('moment')
 const { MySQLClient, sql } = require('../lib/database/client.js')
 const tokens = new (require('csrf'))()
@@ -112,9 +114,15 @@ router.post('/regist/execute', async (req, res, next) => {
     next(error)
     return
   }
+
   delete req.session._csrf
   res.clearCookie('_csrf')
-  res.render('./account/reviews/regist-complete', { shopId })
+
+  res.redirect(`/account/reviews/regist/complete?shopId=${shopId}`)
+})
+
+router.get('/regist/complete', (req, res, next) => {
+  res.render('./account/reviews/regist-complete', { shopId: req.query.shopId })
 })
 
 module.exports = router
