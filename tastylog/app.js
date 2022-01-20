@@ -4,10 +4,12 @@ const path = require('path')
 const logger = require('./lib/log/logger')
 const accesslogger = require('./lib/log/accesslogger')
 const applicationlogger = require('./lib/log/applicationlogger')
+const accesscontrol = require('./lib/security/accesscontrol')
 const express = require('express')
 const favicon = require('serve-favicon')
 const cookie = require('cookie-parser')
 const session = require('express-session')
+const flash = require('connect-flash')
 const MySQLStore = require('express-mysql-session')(session)
 const app = express()
 
@@ -47,6 +49,8 @@ app.use(
   })
 )
 app.use(express.urlencoded({ extended: true }))
+app.use(flash())
+app.use(...accesscontrol.initialize())
 
 // Dynamic resource rooting
 app.use('/account', require('./routes/account'))
