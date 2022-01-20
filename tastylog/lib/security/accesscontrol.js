@@ -69,7 +69,15 @@ const authenticate = () => {
   })
 }
 
-const authorize = () => {}
+const authorize = (privilege) => {
+  return (req, res, next) => {
+    if (req.isAuthenticated() && (req.user.permissions || []).indexOf(privilege) >= 0) {
+      next()
+    } else {
+      res.redirect('/account/login')
+    }
+  }
+}
 
 module.exports = {
   initialize,

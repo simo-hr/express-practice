@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { authenticate, authorize, PRIVILEGE } = require('../lib/security/accesscontrol')
 
-router.get('/', (req, res, next) => {
+router.get('/', authorize(PRIVILEGE.NORMAL), (req, res, next) => {
   res.render('./account/index.ejs')
 })
 
@@ -11,6 +11,6 @@ router.get('/login', (req, res, next) => {
 
 router.post('/login', authenticate())
 
-router.use('/reviews', require('./account.reviews'))
+router.use('/reviews', authorize(PRIVILEGE.NORMAL), require('./account.reviews'))
 
 module.exports = router
