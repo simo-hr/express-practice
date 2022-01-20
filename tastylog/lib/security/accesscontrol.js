@@ -35,7 +35,13 @@ passport.use(
           email: results[0].email,
           permissions: [PRIVILEGE.NORMAL],
         }
-        done(null, user)
+        req.session.regenerate((error) => {
+          if (error) {
+            done(error)
+          } else {
+            done(null, user)
+          }
+        })
       } else {
         done(null, false, req.flash('message', 'ユーザー名 または パスワードが間違っています。'))
       }
