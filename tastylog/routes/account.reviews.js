@@ -63,11 +63,41 @@ router.post('/regist/confirm', async (req, res, next) => {
   const { shopId, shopName } = req.body
 
   if (error) {
-    console.log(error)
     res.render('./account/reviews/regist-form.ejs', { error, shopId, shopName, review })
     return
   }
   res.render('./account/reviews/regist-confirm.ejs', { shopId, shopName, review })
+})
+
+router.post('/regist/execute', async (req, res, next) => {
+  const error = validateReviewData(req)
+  const review = createReviewData(req)
+  const { shopId, shopName } = req.body
+  const userId = 1 // TODO:ログイン機能実装後に更新
+  let transaction
+  if (error) {
+    res.render('./account/reviews/regist-form.ejs', { error, shopId, shopName, review })
+    return
+  }
+
+  try {
+    transaction = await MySQLClient.beginTransaction()
+    transaction.executeQuery(await sql('SELECT_SHOP_BY_ID_FOR_UPDATE'), [shopId])
+    transaction.executeQuery(await sql('INSERT_SHOP_REVIEW'), [
+      shopId,
+      userId,
+      review.score,
+      review.visit,
+      review.description,
+    ])
+    transaction.executeQuery(await sql('UPDATE_SHOP_SCORE_BY_ID'), [shopId, shopId])
+    await transaction.commit()
+  } catch (error) {
+    await transaction.rollback()
+    next(error)
+    return
+  }
+  res.render('./account/reviews/regist-complete', { shopId })
 })
 
 module.exports = router
