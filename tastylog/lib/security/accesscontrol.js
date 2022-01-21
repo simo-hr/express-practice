@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const { MySQLClient, sql } = require('../database/client')
@@ -28,7 +29,7 @@ passport.use(
       } catch (error) {
         return done(error)
       }
-      if (results.length === 1 && password === results[0].password) {
+      if (results.length === 1 && (await bcrypt.compare(password, results[0].password))) {
         user = {
           id: results[0].id,
           name: results[0].name,
