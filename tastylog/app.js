@@ -73,6 +73,16 @@ app.use(
   })()
 )
 
+// Custom Error page
+app.use((req, res, next) => {
+  res.status(404)
+  res.render('./404.ejs')
+})
+app.use((error, req, res, next) => {
+  res.status(500)
+  res.render('./500.ejs')
+})
+
 // Set application log.
 app.use(applicationlogger())
 
