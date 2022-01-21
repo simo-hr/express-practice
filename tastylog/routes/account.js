@@ -11,6 +11,11 @@ router.get('/login', (req, res, next) => {
 
 router.post('/login', authenticate())
 
+router.post('/logout', (req, res, next) => {
+  req.logOut()
+  res.redirect('/account/login')
+})
+
 router.use('/reviews', authorize(PRIVILEGE.NORMAL), require('./account.reviews'))
 
 module.exports = router
