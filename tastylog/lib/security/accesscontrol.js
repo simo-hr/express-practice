@@ -1,10 +1,15 @@
+const { ACCOUNT_LOCK_WINDOW, ACCOUNT_LOCK_THRESHOLD, ACCOUNT_LOCK_TIME, MAX_LOGIN_HISTORY } =
+  require('../../config/application.config').security
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const { MySQLClient, sql } = require('../database/client')
 const PRIVILEGE = {
   NORMAL: 'normal',
 }
-
+const LOGIN_STATUS = {
+  SUCCESS: 0,
+  FAILURE: 1,
+}
 passport.serializeUser((user, done) => {
   done(null, user)
 })
@@ -23,6 +28,7 @@ passport.use(
     },
     async (req, username, password, done) => {
       let results, user
+      const now = new Date()
       try {
         results = await MySQLClient.executeQuery(await sql('SELECT_USER_BY_EMAIL'), [username])
 
@@ -37,13 +43,25 @@ passport.use(
           permissions: [PRIVILEGE.NORMAL],
         }
 
+        // Delete old login log
+        await MySQLClient.executeQuery(await sql('DELETE_LOGIN_HISTORY'), [user.id, user.id, MAX_LOGIN_HISTORY - 1])
+
+        // Compare password
         if (password !== results[0].password) {
+          // Insert login log
+          await MySQLClient.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.FAILURE])
+
           return done(null, false, req.flash('message', 'ユーザー名 または パスワードが間違っています。'))
         }
+
+        // Insert login log
+        await MySQLClient.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.SUCCESS])
+
       } catch (error) {
         return done(error)
       }
 
+      // Session regenerate
       req.session.regenerate((error) => {
         if (error) {
           done(error)
