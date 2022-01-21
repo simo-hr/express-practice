@@ -1,5 +1,6 @@
 const { ACCOUNT_LOCK_WINDOW, ACCOUNT_LOCK_THRESHOLD, ACCOUNT_LOCK_TIME, MAX_LOGIN_HISTORY } =
   require('../../config/application.config').security
+const moment = require('moment')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const { MySQLClient, sql } = require('../database/client')
@@ -29,7 +30,9 @@ passport.use(
     async (req, username, password, done) => {
       let results, user
       const now = new Date()
+
       try {
+        // Get user info
         results = await MySQLClient.executeQuery(await sql('SELECT_USER_BY_EMAIL'), [username])
 
         if (results.length !== 1) {
@@ -43,6 +46,14 @@ passport.use(
           permissions: [PRIVILEGE.NORMAL],
         }
 
+        // Check account lock status
+        if (
+          results[0].locked &&
+          moment(now).isSameOrBefore(moment(results[0].locked).add(ACCOUNT_LOCK_TIME, 'minutes'))
+        ) {
+          return done(null, false, req.flash('message', 'アカウントがロックされています。'))
+        }
+
         // Delete old login log
         await MySQLClient.executeQuery(await sql('DELETE_LOGIN_HISTORY'), [user.id, user.id, MAX_LOGIN_HISTORY - 1])
 
@@ -51,12 +62,25 @@ passport.use(
           // Insert login log
           await MySQLClient.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.FAILURE])
 
+          // Lock account, if need
+          let tmp = await MySQLClient.executeQuery(await sql('COUNT_LOGIN_HISTORY'), [
+            user.id,
+            moment(now).subtract(ACCOUNT_LOCK_WINDOW, 'minutes').toDate(),
+            LOGIN_STATUS.FAILURE,
+          ])
+          const count = (tmp || [])[0].count
+          if (count >= ACCOUNT_LOCK_THRESHOLD) {
+            await MySQLClient.executeQuery(await sql('UPDATE_USER_LOCKED'), [now, user.id])
+          }
+
           return done(null, false, req.flash('message', 'ユーザー名 または パスワードが間違っています。'))
         }
 
         // Insert login log
         await MySQLClient.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.SUCCESS])
 
+        // Unlock account
+        await MySQLClient.executeQuery(await sql('UPDATE_USER_LOCKED'), [null, user.id])
       } catch (error) {
         return done(error)
       }
