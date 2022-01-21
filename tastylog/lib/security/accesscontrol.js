@@ -28,14 +28,16 @@ passport.use(
       passReqToCallback: true,
     },
     async (req, username, password, done) => {
-      let results, user
+      let results, user, transaction
       const now = new Date()
 
       try {
+        transaction = await MySQLClient.beginTransaction()
         // Get user info
-        results = await MySQLClient.executeQuery(await sql('SELECT_USER_BY_EMAIL'), [username])
+        results = await transaction.executeQuery(await sql('SELECT_USER_BY_EMAIL_FOR_UPDATE'), [username])
 
         if (results.length !== 1) {
+          transaction.commit()
           return done(null, false, req.flash('message', 'ユーザー名 または パスワードが間違っています。'))
         }
 
@@ -51,37 +53,40 @@ passport.use(
           results[0].locked &&
           moment(now).isSameOrBefore(moment(results[0].locked).add(ACCOUNT_LOCK_TIME, 'minutes'))
         ) {
+          transaction.commit()
           return done(null, false, req.flash('message', 'アカウントがロックされています。'))
         }
 
         // Delete old login log
-        await MySQLClient.executeQuery(await sql('DELETE_LOGIN_HISTORY'), [user.id, user.id, MAX_LOGIN_HISTORY - 1])
+        await transaction.executeQuery(await sql('DELETE_LOGIN_HISTORY'), [user.id, user.id, MAX_LOGIN_HISTORY - 1])
 
         // Compare password
         if (password !== results[0].password) {
           // Insert login log
-          await MySQLClient.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.FAILURE])
+          await transaction.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.FAILURE])
 
           // Lock account, if need
-          let tmp = await MySQLClient.executeQuery(await sql('COUNT_LOGIN_HISTORY'), [
+          let tmp = await transaction.executeQuery(await sql('COUNT_LOGIN_HISTORY'), [
             user.id,
             moment(now).subtract(ACCOUNT_LOCK_WINDOW, 'minutes').toDate(),
             LOGIN_STATUS.FAILURE,
           ])
           const count = (tmp || [])[0].count
           if (count >= ACCOUNT_LOCK_THRESHOLD) {
-            await MySQLClient.executeQuery(await sql('UPDATE_USER_LOCKED'), [now, user.id])
+            await transaction.executeQuery(await sql('UPDATE_USER_LOCKED'), [now, user.id])
           }
-
+          transaction.commit()
           return done(null, false, req.flash('message', 'ユーザー名 または パスワードが間違っています。'))
         }
 
         // Insert login log
-        await MySQLClient.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.SUCCESS])
+        await transaction.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.SUCCESS])
 
         // Unlock account
-        await MySQLClient.executeQuery(await sql('UPDATE_USER_LOCKED'), [null, user.id])
+        await transaction.executeQuery(await sql('UPDATE_USER_LOCKED'), [null, user.id])
+        transaction.commit()
       } catch (error) {
+        transaction.rollback()
         return done(error)
       }
 
