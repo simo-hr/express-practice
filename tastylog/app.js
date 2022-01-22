@@ -10,8 +10,9 @@ const express = require('express')
 const favicon = require('serve-favicon')
 const cookie = require('cookie-parser')
 const session = require('express-session')
-const flash = require('connect-flash')
 const MySQLStore = require('express-mysql-session')(session)
+const flash = require('connect-flash')
+const gracefulshutdown = require('http-graceful-shutdown')
 const app = express()
 
 // Express settings
@@ -87,6 +88,27 @@ app.use((error, req, res, next) => {
 app.use(applicationlogger())
 
 // Execute web application
-app.listen(appconfig.PORT, () => {
+const server = app.listen(appconfig.PORT, () => {
   logger.application.info(`Application listening at ${appconfig.PORT}`)
+})
+
+// Graceful shutdown
+gracefulshutdown(server, {
+  signals: 'SIGINT SIGTERM',
+  timeout: 10000,
+  onShutdown: () => {
+    return new Promise((resolve, reject) => {
+      const { pool } = require('./lib/database/pool')
+      pool.end((err) => {
+        if (err) {
+          return reject(err)
+        }
+        resolve()
+      })
+    })
+  },
+  finally: () => {
+    const logger = require('./lib/log/logger').application
+    logger.info('Application shutdown finished.')
+  },
 })

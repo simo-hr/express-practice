@@ -331,7 +331,7 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.1.1, debug@^4.3.2:
+debug@4, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
@@ -760,6 +760,13 @@ http-errors@1.8.1:
     setprototypeof "1.2.0"
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.1"
+
+http-graceful-shutdown@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/http-graceful-shutdown/-/http-graceful-shutdown-3.1.5.tgz#1b28de72ba697c1cd8ccd20067ff11279baa0ab8"
+  integrity sha512-DTydrvfHuqSw6cPFgYJEcex5BUsKxvXsbgkuCwlijaHebYcC6iEcPFgkJwucqhyu5pARGDoIPYE1yG06sUotfQ==
+  dependencies:
+    debug "^4.3.1"
 
 https-proxy-agent@^5.0.0:
   version "5.0.0"
