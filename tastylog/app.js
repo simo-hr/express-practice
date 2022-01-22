@@ -80,6 +80,7 @@ app.use((req, res, next) => {
   res.render('./404.ejs')
 })
 app.use((error, req, res, next) => {
+  console.log(error)
   res.status(500)
   res.render('./500.ejs')
 })

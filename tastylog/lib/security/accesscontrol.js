@@ -2,6 +2,7 @@ const { ACCOUNT_LOCK_WINDOW, ACCOUNT_LOCK_THRESHOLD, ACCOUNT_LOCK_TIME, MAX_LOGI
   require('../../config/application.config').security
 const moment = require('moment')
 const passport = require('passport')
+const bcrypt = require('bcrypt')
 const LocalStrategy = require('passport-local').Strategy
 const { MySQLClient, sql } = require('../database/client')
 const PRIVILEGE = {
@@ -61,7 +62,7 @@ passport.use(
         await transaction.executeQuery(await sql('DELETE_LOGIN_HISTORY'), [user.id, user.id, MAX_LOGIN_HISTORY - 1])
 
         // Compare password
-        if (password !== results[0].password) {
+        if (!bcrypt.compareSync(password, results[0].password)) {
           // Insert login log
           await transaction.executeQuery(await sql('INSERT_LOGIN_HISTORY'), [user.id, now, LOGIN_STATUS.FAILURE])
 
