@@ -1,0 +1,3 @@
+SELECT *
+FROM t_shop
+LIMIT 10
