@@ -1,6 +1,6 @@
 /* global gsap */
 
-gsap.set('svg', { visibility: 'visible' })
+gsap.set('svg', { visibility: 'visible', })
 gsap.to('#headStripe', {
   y: 0.5,
   rotation: 1,
@@ -49,8 +49,8 @@ gsap.to('#starsBig g', {
 })
 gsap.fromTo(
   '#starsSmall g',
-  { scale: 0, transformOrigin: '50% 50%' },
-  { scale: 1, transformOrigin: '50% 50%', yoyo: true, repeat: -1, stagger: 0.1 }
+  { scale: 0, transformOrigin: '50% 50%', },
+  { scale: 1, transformOrigin: '50% 50%', yoyo: true, repeat: -1, stagger: 0.1, }
 )
 gsap.to('#circlesSmall circle', {
   y: -4,
@@ -67,7 +67,7 @@ gsap.to('#circlesBig circle', {
   repeat: -1,
 })
 
-gsap.set('#glassShine', { x: -68 })
+gsap.set('#glassShine', { x: -68, })
 
 gsap.to('#glassShine', {
   x: 80,
